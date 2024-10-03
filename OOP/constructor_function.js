@@ -53,7 +53,8 @@ console.log(car_2.plate)
 
 Car.prototype.turn_on = function() {
     console.log(`The ${this.brand} ${this.model} with plate ${this.plate} is ready to roll!`)
-}
+} // now this method is available into the each instantiated object 
+
 
 car_1.turn_on()
 // The Toyota celica with plate AXK - 876 is ready to roll!
