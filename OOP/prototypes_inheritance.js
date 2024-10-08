@@ -47,3 +47,47 @@ console.log(Animal.prototype)
 
 console.log(Animal.prototype.prototype)
 // undefined ← all the objects and elements in javascript end in ' undefined '
+
+// let's add a method to an object 
+
+dog1.firstMethod = function () {
+    console.log("This is a first method")
+}
+
+dog1.firstMethod() 
+// This is a first method ← this only adds a method for an instance. It's not an extensible format to spread it among the other instances via the class
+
+// The right way to introduce a method in a class, for extending it among the instances is using prototype
+
+Dog.prototype.secondMethod = function () {
+    console.log(`This is a second method, I'm a ${this.type} and my name is ${this.name}`)
+}
+
+const dog2 = new Dog('Toby', 'dog', 'bulldog')
+
+dog1.secondMethod()
+// This is a second method, I'm a dog and my name is Bontoy
+
+dog2.secondMethod()
+// This is a second method, I'm a dog and my name is Toby
+
+
+// let's find out the prototype chain of our objects and classes
+
+let currentPrototype = Object.getPrototypeOf(dog1) 
+// first points to the class that creates dog1, which in this case Dog, therefore Object.getPrototypeOf(dog1) you get Animal 
+
+while(currentPrototype !== null){
+    console.log(currentPrototype)
+
+    currentPrototype = Object.getPrototypeOf(currentPrototype)
+}
+/*
+
+Animal { secondMethod: [Function (anonymous)] }
+
+{}
+
+[Object: null prototype] {}
+
+*/
