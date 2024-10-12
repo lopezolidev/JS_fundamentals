@@ -66,13 +66,11 @@ async function fetchData () {
         postContainer.append(button)
         
         postsArray.push(postContainer)
-
-        // listElement.append(postContainer)
     }
 
-    postsArray.forEach(post => listElement.append(post))
 
-    console.log(listElement)
+    listElement.append(...postsArray)
+    // optimizing loading of content by storing each post object inside an array and then loading each post from the array into the listElement (DOM). That way we're loading the HTML only once instead for every new post that comes in the GET request
 
 }// this function creates and appends the posts in the HTML, manipulating the DOM, and inyecting such information in each of our html elements, that later on we'll append in the listElement (container in the HTML)
 
